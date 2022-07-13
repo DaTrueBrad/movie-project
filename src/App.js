@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header";
-import Home from "./components/Home";
+import MovieScreen from "./components/MovieScreen";
 import Watchlist from "./components/Watchlist";
 
 function App() {
@@ -13,12 +13,10 @@ function App() {
   const addMovie = (movie) => setList([...list, movie]);
 
   const removeMovie = (movie) => {
-    setList((prevState) => {
-      const newState = prevState.filter((mov) => {
-        return mov !== movie;
-      });
-      return newState;
+    const newState = list.filter((mov) => {
+      return mov !== movie;
     });
+    setList(newState);
   };
 
   const getData = () => {
@@ -40,7 +38,7 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <Home
+        <MovieScreen
           addMovie={addMovie}
           movieList={movieList}
           page={page}
@@ -48,7 +46,7 @@ function App() {
           list={list}
           removeMovie={removeMovie}
         />
-        <Watchlist list={list} removeMovie={removeMovie} />
+        <Watchlist list={list} removeMovie={removeMovie}/>
       </main>
     </div>
   );

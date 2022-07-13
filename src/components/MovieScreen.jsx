@@ -1,13 +1,14 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-const Home = ({ addMovie, movieList, page, setPage, list, removeMovie}) => {
+const MovieScreen = ({ addMovie, movieList, page, setPage, list, removeMovie}) => {
   const decrement = () => setPage(page - 1);
   const increment = () => setPage(page + 1);
 
   const movieDisplay = movieList.map((movie, index) => {
     return <MovieCard addMovie={addMovie} movie={movie} list={list} removeMovie={removeMovie}/>;
   });
+  
   return (
     <div className="page">
       <h1>Devmountain Movie Theatre</h1>
@@ -21,4 +22,4 @@ const Home = ({ addMovie, movieList, page, setPage, list, removeMovie}) => {
   );
 };
 
-export default Home;
+export default MovieScreen;
